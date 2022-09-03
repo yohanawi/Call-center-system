@@ -49,6 +49,8 @@ $query_phone = mysqli_query($connection, $sql_phone);
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 </head>
 
 <body>
@@ -170,7 +172,7 @@ $query_phone = mysqli_query($connection, $sql_phone);
                                         echo '<tr>
                                                     <td class="txt-oflo">' . $row["number"] . '</td>
                                                     <td class="txt-oflo">' . $row["date"] . '</td>
-                                                    <td><span class="text-success">' . mysqli_num_rows($query2) . '</span></td>
+                                                    <td class="txt-oflo">' . $row["status"] . '</td>
                                                 </tr>';
                                         $counter++;
                                     }
@@ -179,6 +181,89 @@ $query_phone = mysqli_query($connection, $sql_phone);
                                 </table>
                                 <a href="call.php" class="btn btn-info btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">View All logs</a>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-sm-12">
+                        <div class="white-box">
+                            <?php
+                            $chkresults = mysqli_query($connection, "SELECT date(date) AS date, COUNT(*) AS number FROM phone GROUP BY date(date)");
+                            ?>
+                            <script type="text/javascript">
+                                google.charts.load('current', {
+                                    'packages': ['Bar']
+                                });
+                                google.charts.setOnLoadCallback(drawChart);
+
+                                function drawChart() {
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Date', 'Number'],
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($chkresults)) {
+                                            echo "['" . $row["date"] . "'," . $row["number"] . "],";
+                                        }
+                                        ?>
+                                    ]);
+                                    var options = {
+                                        chart: {
+                                            title: '',
+                                        },
+                                        bars: 'vertical',
+                                        vAxis: {
+                                            format: 'decimal'
+                                        },
+                                        height: 300,
+                                        colors: ['#d95f02']
+                                    };
+                                    var chart = new google.charts.Bar(document.getElementById('bar-graph-location'));
+                                    chart.draw(data, google.charts.Bar.convertOptions(options));
+                                }
+                            </script>
+                            <!--location where bar graph will be displayed-->
+                            <div id="bar-graph-location">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="col-md-12 col-lg-6 col-sm-12">
+                        <div class="white-box">
+                            <div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
+                            <?php
+                            $chkresults = mysqli_query($connection, "SELECT date(date) AS date, COUNT(*) AS id FROM ticket GROUP BY date(date)");
+                            ?>
+                            <script>
+                                google.charts.load('current', {
+                                    packages: ['corechart']
+                                });
+                                google.charts.setOnLoadCallback(drawChart);
+
+                                function drawChart() {
+                                    // Set Data
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Date', 'Status'],
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($chkresults)) {
+                                            echo "['" . $row["date"] . "'," . $row["id"] . "],";
+                                        }
+                                        ?>
+                                    ]);
+                                    // Set Options
+                                    var options = {
+                                        title: 'Tickets',
+                                        hAxis: {
+                                            title: 'Date'
+                                        },
+                                        vAxis: {
+                                            title: 'ID'
+                                        },
+                                        legend: 'none'
+                                    };
+                                    // Draw
+                                    var chart = new google.visualization.LineChart(document.getElementById('myChart'));
+                                    chart.draw(data, options);
+                                }
+                            </script>
+
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-6 col-sm-12">
@@ -213,7 +298,13 @@ $query_phone = mysqli_query($connection, $sql_phone);
                             </div>
                         </div>
                     </div>
+
                 </div>
+                <!-- /.row -->
+                <div class="row">
+                    
+                </div>
+                
                 <!-- .right-sidebar -->
                 <?php include './components/sidebar.php'; ?>
             </div>

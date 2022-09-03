@@ -16,6 +16,7 @@ $query = mysqli_query($connection, $sql);
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/telephone-call.png">
     <title>Call-center | Call</title>
+    <link href="../client/css/style.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="../admin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
@@ -31,6 +32,7 @@ $query = mysqli_query($connection, $sql);
     <link href="../admin/css/style.css" rel="stylesheet">
     <!-- color CSS -->
     <link href="../admin/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -72,6 +74,48 @@ $query = mysqli_query($connection, $sql);
                                             <label>Phone</label>
                                             <input type="number" name="number" class="form-control" required="">
                                         </div>
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" name="name" class="form-control" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Start time</label>
+                                            <input type="time" name="stime" class="form-control" required><br />
+                                            <label>End time</label>
+                                            <input type="time" name="etime" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Feedback</label>
+                                            <textarea name="comment" class="form-control"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-6 col-xs-12 control-label">Call status</label>
+                                            <div class="col-md-6 col-xs-12">
+                                                <select name="status" class="form-control select">
+                                                    <option value="">Select Call status</option>
+                                                    <option value="incoming">Incoming </option>
+                                                    <option value="outgoing">Outgoing</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="container-s">
+                                            <label class="col-md-6 col-xs-12 control-label">Rate</label>
+                                                <div class="star-widget">
+                                                    <input type="radio" name="rate" value="5" id="rate-5">
+                                                    <label for="rate-5" class="fas fa-star"></label>
+                                                    <input type="radio" name="rate" value="4" id="rate-4">
+                                                    <label for="rate-4" class="fas fa-star"></label>
+                                                    <input type="radio" name="rate" value="3" id="rate-3">
+                                                    <label for="rate-3" class="fas fa-star"></label>
+                                                    <input type="radio" name="rate" value="2" id="rate-2">
+                                                    <label for="rate-2" class="fas fa-star"></label>
+                                                    <input type="radio" name="rate" value="1" id="rate-1">
+                                                    <label for="rate-1" class="fas fa-star"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br /><br />
                                         <div class="form-group text-center m-t-20">
                                             <div class="col-xs-12">
                                                 <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit" name="insert">Add</button>
@@ -82,10 +126,7 @@ $query = mysqli_query($connection, $sql);
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--./row-->
-                <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-6">
                         <div class="white-box">
                             <h3 class="box-title m-b-0">Call Log ( <x style="color: orange;"><?php echo mysqli_num_rows($query); ?></x> )</h3>
                             <div class="table-responsive">
@@ -98,7 +139,7 @@ $query = mysqli_query($connection, $sql);
                                             <thead>
                                                 <tr>
                                                     <th>Number</th>
-                                                    <th>Status</th>
+                                                    <th>Name</th>
                                                     <th>date</th>
                                                     <th>action</th>
                                                 </tr>
@@ -110,7 +151,7 @@ $query = mysqli_query($connection, $sql);
                                         echo '
                                             <tr>
                                                 <td class="txt-oflo">' . $row["number"] . '</td>
-                                                <td class="txt-oflo">' . $row["status"] . '</td>
+                                                <td class="txt-oflo">' . $row["name"] . '</td>
                                                 <td class="txt-oflo">' . $row["date"] . '</td>
                                                 <td><a href="#"><i class="fa fa-trash"  data-toggle="modal" data-target="#responsive-modal' . $row["id"] . '" title="remove" style="color:red;"></i></a></td>
                                                 <!-- /.modal -->

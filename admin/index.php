@@ -45,10 +45,7 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
     <!-- color CSS -->
     <link href="css/colors/blue.css" id="theme" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -148,21 +145,6 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="white-box">
-                            <div style="display:inline-block" id="kf-embed-container-b3dc92fd5efe81ba5a0a6cd673a52935"></div>
-                                <script type="text/javascript" src="https://embed.klipfolio.com/a/js/embed.api"></script>
-                                <script type="text/javascript">
-                                KF.embed.embedKlip({
-                                profile : "b3dc92fd5efe81ba5a0a6cd673a52935",
-                                settings : {"width":678,"theme":"light","borderStyle":"round","borderColor":"#cccccc"},
-                                title : "How many people subscribed to my blog today?"
-                                });
-                                </script>
-                        </div>
-                    </div>
-                </div> 
                 <!--row -->
                 <div class="row">
                     <div class="col-md-12 col-lg-6 col-sm-12">
@@ -195,6 +177,89 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6 col-sm-12">
+                        <div class="white-box">
+                            <div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
+                            <?php
+                            $chkresults = mysqli_query($connection, "SELECT date(date) AS date, COUNT(*) AS id FROM ticket GROUP BY date(date)");
+                            ?>
+                            <script>
+                                google.charts.load('current', {
+                                    packages: ['corechart']
+                                });
+                                google.charts.setOnLoadCallback(drawChart);
+
+                                function drawChart() {
+                                    // Set Data
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Date', 'Status'],
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($chkresults)) {
+                                            echo "['" . $row["date"] . "'," . $row["id"] . "],";
+                                        }
+                                        ?>
+                                    ]);
+                                    // Set Options
+                                    var options = {
+                                        title: 'Tickets',
+                                        hAxis: {
+                                            title: 'Date'
+                                        },
+                                        vAxis: {
+                                            title: 'ID'
+                                        },
+                                        legend: 'none'
+                                    };
+                                    // Draw
+                                    var chart = new google.visualization.LineChart(document.getElementById('myChart'));
+                                    chart.draw(data, options);
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <!--row-->
+                <div class="row">
+                    <div class="col-md-12 col-lg-6 col-sm-12">
+                        <div class="white-box">
+                            <div id="myChart2" style="width:100%; max-width:600px; height:500px;"></div>
+                            <?php
+                            $chkresults2 = mysqli_query($connection, "SELECT date(date) AS date, COUNT(*) AS id FROM subscribers GROUP BY date(date)");
+                            ?>
+                            <script>
+                                google.charts.load('current', {
+                                    packages: ['corechart']
+                                });
+                                google.charts.setOnLoadCallback(drawChart2);
+
+                                function drawChart2() {
+                                    // Set Data
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Date', 'Subscribers'],
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($chkresults2)) {
+                                            echo "['" . $row["date"] . "'," . $row["id"] . "],";
+                                        }
+                                        ?>
+                                    ]);
+                                    // Set Options
+                                    var options = {
+                                        title: 'Subscribers',
+                                        hAxis: {
+                                            title: 'Date'
+                                        },
+                                        vAxis: {
+                                            title: 'ID'
+                                        },
+                                        legend: 'none'
+                                    };
+                                    // Draw
+                                    var chart = new google.visualization.LineChart(document.getElementById('myChart2'));
+                                    chart.draw(data, options);
+                                }
+                            </script>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-6 col-sm-12">
@@ -247,138 +312,9 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                         </div>
                     </div>
                 </div>
-                <!--row-->
-                <div class="row">
-                    <div class="col">
-                        <div class="white-box">
-                            <div class="col-lg-12" style="min-height:280px;">
-                                <div class="panel">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> All User Visit </h3>
-                                        <script type="text/javascript">
-                                            var visitorsCount = [];
-                                            var myCat = [];
-                                        </script>
-                                        <?php
-                                        $totaldays = cal_days_in_month(CAL_GREGORIAN, date("m"), date("Y"));
-                                        $month_array = array();
-                                        for ($i = 1; $i <= $totaldays; $i++) {
-                                            if (!array_key_exists($i, $month_array)) {
-                                                $key = '';
-                                                if ($i < 10) {
-                                                    $key = '0' . $i;
-                                                    $month_array[$key] = 0;
-                                                } else {
-                                                    $month_array[$i] = 0;
-                                                }
-                                        ?>
-                                                <script type="text/javascript">
-                                                    var myKey = "Day " + '<?php echo $i; ?>';
-                                                    myCat.push(myKey);
-                                                </script>
-                                            <?php
-                                            }
-                                        }
-                                        //print_r($month_array);
-                                        $results = mysqli_query($connection,"SELECT MONTH(date) AS c_month, COUNT(id) AS c_count FROM phone");
-                                        //$f2=mysql_num_rows($a2);									
-                                        if (mysqli_num_rows($results) > 0) {
-                                            while ($row = mysqli_fetch_row($results)) {
-                                                $user_date = $row[0];
-                                                $dateArray = explode('/', $user_date);
-                                                $year = $dateArray[0];
-                                                $monthName = date("M", mktime(0, 0, 0,  10));
-                                                $currentMonth = date('m', mktime(0, 0, 0, 10));
-                                                if ($year == date("Y") && $currentMonth == date("m")) {
-                                                    if (array_key_exists($dateArray[2], $month_array)) {
-                                                        $month_array[$dateArray[2]] = $month_array[$dateArray[2]] + 1;
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        //print_r($month_array);
-                                        foreach ($month_array as $key => $number) {
-                                            ?>
-                                            <script type="text/javascript">
-                                                visitorsCount.push(<?php echo $number; ?>);
-                                            </script>
-                                        <?php
-                                        }
-                                        ?>
-                                        <script type="text/javascript">
-                                            var d = new Date();
-                                            var month = new Array();
-                                            month[0] = "January";
-                                            month[1] = "February";
-                                            month[2] = "March";
-                                            month[3] = "April";
-                                            month[4] = "May";
-                                            month[5] = "June";
-                                            month[6] = "July";
-                                            month[7] = "August";
-                                            month[8] = "September";
-                                            month[9] = "October";
-                                            month[10] = "November";
-                                            month[11] = "December";
-                                            var n = month[d.getMonth()];
-                                            $(function() {
-                                                $('#container').highcharts({
-                                                    title: {
-                                                        text: 'Daily Visitors Chart of ' + n,
-                                                        x: -20 //center
-                                                    },
-                                                    subtitle: {
-                                                        text: '',
-                                                        x: -20
-                                                    },
-                                                    xAxis: {
-                                                        categories: myCat
-                                                    },
-                                                    yAxis: {
-                                                        min: 0,
-                                                        title: {
-                                                            text: 'User Count'
-                                                        },
-                                                        plotLines: [{
-                                                            value: 0,
-                                                            width: 1,
-                                                            color: '#808080'
-                                                        }]
-                                                    },
-                                                    tooltip: {
-                                                        valueSuffix: ' Users'
-                                                    },
-                                                    legend: {
-                                                        layout: 'vertical',
-                                                        align: 'right',
-                                                        verticalAlign: 'middle',
-                                                        borderWidth: 0
-                                                    },
-                                                    series: [{
-                                                        name: 'User',
-                                                        data: visitorsCount
-                                                    }]
-                                                });
-                                            });
-                                        </script>
-                                        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->   
-                
-                <div style="display:inline-block" id="kf-embed-container-bf25082414ae652aac8dfdba030dd166"></div>
-                <script type="text/javascript" src="https://embed.klipfolio.com/a/js/embed.api"></script>
-                <script type="text/javascript">
-                KF.embed.embedKlip({
-                profile : "bf25082414ae652aac8dfdba030dd166",
-                settings : {"width":678,"theme":"light","borderStyle":"round","borderColor":"#cccccc"},
-                title : "Zendesk Tickets by Month (Last 12 Months)"
-                });
-                </script>            
+                <!-- line chart -->
+
+                <!-- /.row -->
                 <!-- .right-sidebar -->
                 <?php include './components/sidebar.php'; ?>
             </div>

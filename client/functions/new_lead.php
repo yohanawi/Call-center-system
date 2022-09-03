@@ -57,12 +57,19 @@
     if(isset($_POST['insert']))
     {
         $phone = $_POST['number'];
+        $name = $_POST['name'];
+        $stime = $_POST['stime'];
+        $etime = $_POST['etime'];
+        $comment = $_POST['comment'];
+        $rate = $_POST['rate'];
+        $status = $_POST['status'];
+        
         //-- Insert Data Into DB --//
-        $sql = "INSERT INTO phone (number) 
-        VALUES (?)";
+        $sql = "INSERT INTO phone (number,name,stime,etime,comment,rate,status) 
+        VALUES (?,?,?,?,?,?,?)";
         $stmt = $db->prepare($sql);
         try {
-            $stmt->execute([$phone]);
+            $stmt->execute([$phone,$name,$stime,$etime,$comment,$rate,$status]);
             header('Location:../call.php?success');
         } catch (Exception $e) {
             $e->getMessage();

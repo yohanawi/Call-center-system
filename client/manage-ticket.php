@@ -124,6 +124,8 @@ $query_tickets = mysqli_query($connection, $sql_ticket);
     </div>
     </div>
     </div>
+    </div>
+    </div>
     <!--./row-->
     <?php include './components/sidebar.php'; ?>
     </div>

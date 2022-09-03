@@ -152,7 +152,7 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6" id="calltab">
+                    <div class="col-md-12" id="calltab">
                         <div class="white-box">
                             <h3 class="box-title m-b-0">Calls Log( <x style="color: orange;"><?php echo mysqli_num_rows($query); ?></x> )</h3>
                             <div class="row">
@@ -167,18 +167,27 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                                                 <thead>
                                                     <tr>
                                                         <th>Number</th>
+                                                        <th>Name</th>
+                                                        <th>Duration</th>
+                                                        <th>comment</th>
+                                                        <th>status</th>
+                                                        <th>Rate</th>
                                                         <th>DATE</th>
                                                         <th>Action</th>
                                                     </tr>
                                                     </thead>
-                                                    <tbody>'
-                                                ;
+                                                    <tbody>';
                                             }
                                             while ($row = mysqli_fetch_array($query)) {
                                                 // $id = $row["id"]
                                                 echo '
                                                     <tr>
                                                         <td>' . $row["number"] . '</td>
+                                                        <td>' . $row["name"] . '</td>
+                                                        <td>' . $row['stime'] . '  ' . $row['etime'] . '</td>
+                                                        <td>' . $row["comment"] . '</td>
+                                                        <td>' . $row["rate"] . '</td>
+                                                        <td>' . $row["status"] . '</td>
                                                         <td>' . $row["date"] . '</td>
                                                         <td><a href="#"><i class="fa fa-trash"  data-toggle="modal" data-target="#responsive-modal' . $row["id"] . '" title="remove" style="color:red;"></i></a></td>
                                                         <!-- /.modal -->
@@ -235,26 +244,29 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                                         </div>
                                         <?php
                                         }
-                                        } else {
-                                        ?>
-                                        <h3 align="center" style="color:red;">No Record found</h3>
+                                    } else {
+                                            ?>
+                                            <h3 align="center" style="color:red;">No Record found</h3>
                                         <?php
-                                        }
+                                    }
                                         ?>
                                         <a href="manage-ticket.php" class="btn btn-info btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">View All Tickets</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-                <!--./row-->
-                <?php include './components/sidebar.php'; ?>
             </div>
-            <!-- /.container-fluid -->
-            <?php include './components/footer.php'; ?>
         </div>
-        <!-- /#page-wrapper -->
+    </div>
+    <!--./row-->
+    <?php include './components/sidebar.php'; ?>
+    </div>
+    <!-- /.container-fluid -->
+    <?php include './components/footer.php'; ?>
+    </div>
+    <!-- /#page-wrapper -->
     </div>
     <!-- jQuery -->
     <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
@@ -283,6 +295,7 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                 x.style.display = "none";
             }
         }
+
         function myFunction2() {
             var x = document.getElementById("calltab");
             if (x.style.display === "none") {
@@ -291,6 +304,7 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                 x.style.display = "none";
             }
         }
+
         function myFunction3() {
             var x = document.getElementById("tickettab");
             if (x.style.display === "none") {
