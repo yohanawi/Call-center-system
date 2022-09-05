@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2022 at 02:39 PM
+-- Generation Time: Sep 05, 2022 at 05:02 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -41,9 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `role`, `password`, `date`) VALUES
-(4, 'admin', 'admin@example.com', 'admin', '$2y$12$HP9yMU7ND.83aak5UmmDM.xXm24RuxXcq8cEfhPgCS5C2yoA8jM0q', '2018-08-07 01:23:11'),
-(6, '', 'dfdf@gmail.com', 'manager', '$2y$12$QeJTuqzcjMdDHkP4VIzXueo1gNaTrjF7hmYzNlXjNcjuQaKLvRtS.', '2022-08-17 21:19:02'),
-(7, 'awishka yohan', 'yohanaaa@gmail.coaa', 'staff', '$2y$12$63O0jRsIinhvMJoW9CdeTOeZi/Mb3UBjpyBY6QITnxL15ibuvm7Tq', '2022-08-17 21:22:49');
+(9, 'admin', 'admin@gmail.com', 'admin', '$2y$12$wo5MuxMScRc26QNA09BhOOwYQ79SHdTldiGtK8qWLMwxHK74Oo.36', '2022-09-05 20:30:36');
 
 -- --------------------------------------------------------
 
@@ -60,15 +58,6 @@ CREATE TABLE `comments` (
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `comments`
---
-
-INSERT INTO `comments` (`id`, `name`, `comment`, `status`, `blogid`, `date`) VALUES
-(1, 'Jaden', 'Awesome post guys!!', '', 6, '2018-07-28 00:15:59'),
-(6, 'Cliff', 'I really relate to this', '', 5, '2018-07-28 01:00:14'),
-(8, 'Ethredah', 'nice', 'open', 7, '2018-07-29 21:10:30');
-
 -- --------------------------------------------------------
 
 --
@@ -82,16 +71,6 @@ CREATE TABLE `contacts` (
   `message` text NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `contacts`
---
-
-INSERT INTO `contacts` (`id`, `names`, `email`, `message`, `date`) VALUES
-(2, 'Chao', 'chao@gmail.com', 'Hi there!!', '2018-07-27 16:57:59'),
-(4, 'James Mlamba', 'jaymo@gmail.com', 'I am interested in a meeting.', '2018-07-28 01:38:22'),
-(5, 'James Mlamba', 'ethredah@gmail.com', 'hi', '2018-07-31 19:45:43'),
-(8, 'indrawansha', 'indrawansha@gmail.com', 'system testing ', '2022-08-18 20:25:18');
 
 -- --------------------------------------------------------
 
@@ -113,14 +92,6 @@ CREATE TABLE `leads` (
   `assign` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `leads`
---
-
-INSERT INTO `leads` (`id`, `fname`, `lname`, `nic`, `phone`, `email`, `birthday`, `address`, `gender`, `image_pro`, `assign`) VALUES
-(4, 'yohan', 'awishka', '200008600315', '0778956235', 'yohanawishka2000326@gmail.com', '2022-08-02', '18 lakshman garden colombo road divulapitiya', 'Male', 'IMG_20210115_123148_005.jpg', 'active'),
-(7, 'yohan', 'indrawansha', '200008600315', '0781667268', 'indrawansha@gmail.com', '2000-03-26', '178,ullalapola,divulapitiya', 'Male', 'WhatsApp Image 2021-11-14 at 19.46.18ghj.png', 'active');
-
 -- --------------------------------------------------------
 
 --
@@ -130,17 +101,14 @@ INSERT INTO `leads` (`id`, `fname`, `lname`, `nic`, `phone`, `email`, `birthday`
 CREATE TABLE `phone` (
   `id` int(11) NOT NULL,
   `number` varchar(15) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `stime` time NOT NULL,
+  `etime` time NOT NULL,
+  `comment` varchar(500) NOT NULL,
   `status` varchar(50) NOT NULL,
+  `rate` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `phone`
---
-
-INSERT INTO `phone` (`id`, `number`, `status`, `date`) VALUES
-(7, '0778956235', '', '2022-08-16 13:34:45'),
-(11, '0775149044', '', '2022-08-18 20:08:53');
 
 -- --------------------------------------------------------
 
@@ -158,10 +126,7 @@ CREATE TABLE `role` (
 --
 
 INSERT INTO `role` (`id`, `role`) VALUES
-(2, 'admin'),
-(3, 'manager'),
-(4, 'staff'),
-(5, 'supervisor');
+(2, 'admin');
 
 -- --------------------------------------------------------
 
@@ -174,18 +139,6 @@ CREATE TABLE `subscribers` (
   `email` varchar(50) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `subscribers`
---
-
-INSERT INTO `subscribers` (`id`, `email`, `date`) VALUES
-(3, 'ethredah@gmail.com', '2018-07-27 18:21:30'),
-(4, 'james@hack3.io', '2018-07-27 18:21:30'),
-(6, 'admin@pikash.sales', '2018-07-28 01:49:21'),
-(7, 'test@gmail.com', '2022-08-11 18:48:45'),
-(8, 'yohanawishka2000326@gmail.com', '2022-08-13 12:30:49'),
-(9, 'indrawansha@gmail.com', '2022-08-18 20:25:50');
 
 -- --------------------------------------------------------
 
@@ -204,16 +157,6 @@ CREATE TABLE `ticket` (
   `admin_remark` varchar(1000) NOT NULL,
   `admin_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `ticket`
---
-
-INSERT INTO `ticket` (`id`, `subject`, `tasktype`, `priority`, `description`, `status`, `date`, `admin_remark`, `admin_date`) VALUES
-(1, 'helo', 'ot1', 'non-urgent', 'hi hi', 'closed', '2022-08-16 18:56:35', 'ssssa', '2022-08-17 19:12:09'),
-(4, 'Create Ticket', 'ot1', 'important', 'I want create ticket and manage ticket', 'closed', '2022-08-18 00:57:38', 'solved', '2022-08-17 19:27:38'),
-(5, 'ddssd', 'ot2', 'question', 'sdsdsd', 'closed', '2022-08-18 01:29:23', 'sdsd', '2022-08-17 19:59:23'),
-(6, 'testing ', 'ot3', 'urgent(functional problem)', 'system testing part 02', '', '2022-08-18 20:09:47', '', '2022-08-18 14:39:47');
 
 -- --------------------------------------------------------
 
@@ -236,10 +179,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `phone`, `email`, `password`, `date`) VALUES
-(2, 'awishka', 'yohan', '0778956235', 'yohan1@gmail.com', '$2y$12$XQ2jokySAgVn8U7iITVgGuP3OqVA.XjzWdm7KZi5kQAS0ulC6w1Q2', '2022-08-13 12:08:43'),
-(3, 'fdhgdgfh', 'dfghfdgh', '5656', 'fhfcgh@gmail.com', 'dsdsd', '2022-09-01 11:25:39'),
-(5, 'yohan', 'awishka', '0778956235', 'yohanawishka2000326@gmail.com', '$2y$12$h7ZUITY6qgIqOvjWQZ48x.1/jlcpxrzhWixxLoLo3reJX6tBvHVBK', '2022-08-17 18:59:51'),
-(6, 'yohan', 'indrawansha', '0781667268', 'indrawansha@gmail.com', '$2y$12$o3CzRrhh6XkUmeCOK74v9uSveQyITeugZeFGRO5ZU75oVl9AhN5Ba', '2022-08-18 20:03:56');
+(8, 'test', 'user', '07712345678', 'user@gmail.com', '$2y$12$yvFb0.ETvGcO9ktK767oP.obOewOijCVZjE.RWcAxf/I.SnQZhRMa', '2022-09-05 20:27:34');
 
 --
 -- Indexes for dumped tables
@@ -308,7 +248,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -326,37 +266,37 @@ ALTER TABLE `contacts`
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `phone`
 --
 ALTER TABLE `phone`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
