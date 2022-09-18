@@ -16,6 +16,14 @@ $sql_phone = "SELECT * FROM phone";
 $query_phone = mysqli_query($connection, $sql_phone);
 $sql_ticket = "SELECT * FROM ticket";
 $query_ticket = mysqli_query($connection, $sql_ticket);
+$sql_agent = "SELECT * FROM agent";
+$query_agent = mysqli_query($connection, $sql_agent);
+$chart_data = "";
+while ($row = mysqli_fetch_array($query_agent)) {
+
+    $productname[]  = $row['company'];
+    $sales[] = $row['id'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -145,38 +153,57 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                         </div>
                     </div>
                 </div>
-                <!--row -->
                 <div class="row">
                     <div class="col-md-12 col-lg-6 col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Recent Messages</h3>
-                            <div class="comment-center">
-                                <div class="comment-body">
-                                    <div class="mail-contnet">
+                            <div style="width:50%;hieght:40%;text-align:center">
+                                <h2 class="page-header">Agents</h2>
+                                <div>Company </div>
+                                <canvas id="chartjs_pie"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--row -->
+                <div class="row">
+                <div class="col-md-12 col-lg-6 col-sm-12">
+                        <div class="white-box">
+                            <div id="myChart2" style="width:100%; max-width:600px; height:500px;"></div>
+                            <?php
+                            $chkresults2 = mysqli_query($connection, "SELECT date(date) AS date, COUNT(*) AS id FROM subscribers GROUP BY date(date)");
+                            ?>
+                            <script>
+                                google.charts.load('current', {
+                                    packages: ['corechart']
+                                });
+                                google.charts.setOnLoadCallback(drawChart2);
+
+                                function drawChart2() {
+                                    // Set Data
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Date', 'Subscribers'],
                                         <?php
-                                        if (mysqli_num_rows($query_contacts) == 0) {
-                                            echo "<i style='color:brown;'>There are no massages yet :( </i> ";
-                                        } else {
-                                            $counter = 0;
-                                            $max = 3;
-                                            while ($row2 = mysqli_fetch_array($query_contacts)) {
-                                                $id = $row2["id"];
-                                                $sql2 = "SELECT * FROM contacts WHERE id='$id'";
-                                                $query2 = mysqli_query($connection, $sql2);
-                                                while (($row3 = mysqli_fetch_assoc($query2)) and ($counter < $max)) {
-                                                    echo '<b>' . $row2["names"] . '</b>
-                                                                <h5>Email : ' . $row3["email"] . '</h5>
-                                                                <span class="mail-desc">' . $row2["message"] . '</span> <span class="time pull-right">' . $row2["date"] . '</span>';
-                                                    $counter++;
-                                                }
-                                            }
+                                        while ($row = mysqli_fetch_assoc($chkresults2)) {
+                                            echo "['" . $row["date"] . "'," . $row["id"] . "],";
                                         }
                                         ?>
-                                        <hr>
-                                        <a href="inbox.php" class="btn btn-info btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">View All Messages</a>
-                                    </div>
-                                </div>
-                            </div>
+                                    ]);
+                                    // Set OptionsS
+                                    var options = {
+                                        title: 'Subscribers',
+                                        hAxis: {
+                                            title: 'Date'
+                                        },
+                                        vAxis: {
+                                            title: 'ID'
+                                        },
+                                        legend: 'none'
+                                    };
+                                    // Draw
+                                    var chart = new google.visualization.LineChart(document.getElementById('myChart2'));
+                                    chart.draw(data, options);
+                                }
+                            </script>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-6 col-sm-12">
@@ -222,46 +249,39 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                 </div>
                 <!--row-->
                 <div class="row">
-                    <div class="col-md-12 col-lg-6 col-sm-12">
+                <div class="col-md-12 col-lg-6 col-sm-12">
                         <div class="white-box">
-                            <div id="myChart2" style="width:100%; max-width:600px; height:500px;"></div>
-                            <?php
-                            $chkresults2 = mysqli_query($connection, "SELECT date(date) AS date, COUNT(*) AS id FROM subscribers GROUP BY date(date)");
-                            ?>
-                            <script>
-                                google.charts.load('current', {
-                                    packages: ['corechart']
-                                });
-                                google.charts.setOnLoadCallback(drawChart2);
-
-                                function drawChart2() {
-                                    // Set Data
-                                    var data = google.visualization.arrayToDataTable([
-                                        ['Date', 'Subscribers'],
+                            <h3 class="box-title">Recent Messages</h3>
+                            <div class="comment-center">
+                                <div class="comment-body">
+                                    <div class="mail-contnet">
                                         <?php
-                                        while ($row = mysqli_fetch_assoc($chkresults2)) {
-                                            echo "['" . $row["date"] . "'," . $row["id"] . "],";
+                                        if (mysqli_num_rows($query_contacts) == 0) {
+                                            echo "<i style='color:brown;'>There are no massages yet :( </i> ";
+                                        } else {
+                                            $counter = 0;
+                                            $max = 3;
+                                            while ($row2 = mysqli_fetch_array($query_contacts)) {
+                                                $id = $row2["id"];
+                                                $sql2 = "SELECT * FROM contacts WHERE id='$id'";
+                                                $query2 = mysqli_query($connection, $sql2);
+                                                while (($row3 = mysqli_fetch_assoc($query2)) and ($counter < $max)) {
+                                                    echo '<b>' . $row2["names"] . '</b>
+                                                                <h5>Email : ' . $row3["email"] . '</h5>
+                                                                <span class="mail-desc">' . $row2["message"] . '</span> <span class="time pull-right">' . $row2["date"] . '</span>';
+                                                    $counter++;
+                                                }
+                                            }
                                         }
                                         ?>
-                                    ]);
-                                    // Set Options
-                                    var options = {
-                                        title: 'Subscribers',
-                                        hAxis: {
-                                            title: 'Date'
-                                        },
-                                        vAxis: {
-                                            title: 'ID'
-                                        },
-                                        legend: 'none'
-                                    };
-                                    // Draw
-                                    var chart = new google.visualization.LineChart(document.getElementById('myChart2'));
-                                    chart.draw(data, options);
-                                }
-                            </script>
+                                        <hr>
+                                        <a href="inbox.php" class="btn btn-info btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">View All Messages</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    
                     <div class="col-md-12 col-lg-6 col-sm-12">
                         <div class="white-box">
                             <div class="row sales-report">
@@ -313,7 +333,6 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                     </div>
                 </div>
                 <!-- line chart -->
-
                 <!-- /.row -->
                 <!-- .right-sidebar -->
                 <?php include './components/sidebar.php'; ?>
@@ -371,5 +390,42 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
     <!--Style Switcher -->
     <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script type="text/javascript">
+    var ctx = document.getElementById("chartjs_pie").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: <?php echo json_encode($productname); ?>,
+            datasets: [{
+                backgroundColor: [
+                    "#5969ff",
+                    "#ff407b",
+                    "#25d5f2",
+                    "#ffc750",
+                    "#2ec551",
+                    "#7040fa",
+                    "#ff004e"
+                ],
+                data: <?php echo json_encode($sales); ?>,
+            }]
+        },
+        options: {
+            legend: {
+                display: true,
+                position: 'bottom',
+
+                labels: {
+                    fontColor: '#71748d',
+                    fontFamily: 'Circular Std Book',
+                    fontSize: 14,
+                }
+            },
+
+
+        }
+    });
+</script>
 
 </html>

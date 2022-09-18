@@ -4,7 +4,7 @@
     $db['db_user'] = 'root';
     $db['db_pass'] = '';
     $db['db_name'] = 'Company';
-
+ 
     foreach ($db as $key => $value) {
         define(strtoupper($key), $value);
     }
@@ -68,6 +68,25 @@
         try {
             $stmt->execute([$role]);
             header('Location:../role.php?success');
+        } catch (Exception $e) {
+            $e->getMessage();
+            echo "Error";
+        }
+    }
+
+    if(isset($_POST['save']))
+    {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $company = $_POST['company'];
+        $phone = $_POST['phone'];
+        //-- Insert Data Into DB --//
+        $sql = "INSERT INTO agent (name, email, company, phone) 
+        VALUES (?,?,?,?)";
+        $stmt = $db->prepare($sql);
+        try {
+            $stmt->execute([$name, $email, $company, $phone]);
+            header('Location:../agent.php?success');
         } catch (Exception $e) {
             $e->getMessage();
             echo "Error";

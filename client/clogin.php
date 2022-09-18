@@ -84,24 +84,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="../admin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
     <!-- animation CSS -->
-    <link href="../admin/css/animate.css" rel="stylesheet">
+    <link href="admin/css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../admin/css/style.css" rel="stylesheet">
+    <link href="/admin/css/style.css" rel="stylesheet">
     <!-- color CSS -->
-    <link href="../admin/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link href="/admin/css/colors/blue.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
+<style>
+body {
+  background-image: url('../images/pexels-yan-krukov-8867482.png');
+}
+</style>
 </head>
 
 <body>
     <!-- Preloader -->
-    <div class="preloader">
-        <div class="cssload-speeding-wheel"></div>
-    </div>
+    
     <section id="wrapper" class="login-register">
         <div class="login-box">
             <div class="white-box">

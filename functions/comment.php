@@ -2,7 +2,7 @@
 
 <?php
 
-require_once "../Company_admin/functions/db.php";
+include_once '../admin/functions/db.php';
 
 $blogid = $_POST['blogid'];
 $name = $_POST['name'];

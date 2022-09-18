@@ -4469,7 +4469,7 @@ table.focus-on tbody tr.focused th {
 }
 
 .select2-container-multi .select2-choices {
-    border: 1px solid #border !important;
+    border: 1px solid border !important;
     box-shadow: none !important;
     background-image: none !important;
     border-radius: 0 !important;
@@ -4606,7 +4606,7 @@ table.focus-on tbody tr.focused th {
 }
 
 .login-register {
-    background: url(../../plugins/images/pexels-yan-krukov-8867482.png) center center/cover no-repeat !important;
+    background: url(/plugins/images/pexels-yan-krukov-8867482.png) center center/cover no-repeat !important;
     height: 100%;
     position: fixed
 }
@@ -5856,7 +5856,7 @@ ul.list-icons li i {
 }
 
 .editable-table+input.error {
-    border: 1px solid #danger;
+    border: 1px solid red;
     outline: 0;
     outline-offset: 0
 }

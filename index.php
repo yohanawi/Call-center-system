@@ -74,7 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="flexslider">
 						<ul class="slides">
 							<li>
-								<h3>Customer Service !</h3>
+								<h3>We help you to turn your every customer call in intelligence resource!</h3>
 								<p>We offer instant and quality</p>
 							</li>
 							
@@ -110,11 +110,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="column right">
 						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, ipsum similique! Deleniti, sunt harum consequatur nulla odio repellendus iure magni quia suscipit ipsam, accusamus odit, optio ad omnis corrupti ab.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, cupiditate! Sunt, libero. Cum earum dicta voluptate odio rerum eligendi nisi minima neque autem. Nemo quis numquam exercitationem sed esse eum!
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates ad fuga velit totam eos quod exercitationem cumque quis dicta? Placeat ab maxime molestiae amet autem cumque repudiandae. Excepturi, itaque impedit.
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam corrupti molestiae harum aliquam quae, voluptatibus quod sapiente necessitatibus corporis, ab itaque in laudantium architecto illum aliquid doloribus consequatur cum commodi?
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi earum, consectetur doloremque pariatur error eum, sed eius obcaecati reprehenderit libero quibusdam quidem quo eos ipsa similique fugiat culpa, in possimus!
+						<h2>The best state-of-the-art for call centers</h2><br/><br/>
+							The <span style="color: red;">Call center</span> delivers real-time caller conversation analytics for all voice call interactions across multiple channels enabling organizations to explore customers conversations for informed business decision making.<br/><br/>
+							<span style="color: red;">Call center </span>helps connect various data points throughout the conversation and provide accurate hypotheses with data-supported evidence in any business scenario.
 						</p>
 					</div>
 				</div>

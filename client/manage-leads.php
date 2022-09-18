@@ -82,7 +82,7 @@ $query_ticket = mysqli_query($connection, $sql_ticket);
                                     while ($row = mysqli_fetch_array($query_leads)) {
                                     ?>
                                         <div class="row">
-                                            <img src="../plugins/images/user.jpg" alt="user-img" class="img-circle" style="margin-left: 150px; width: 250px;">
+                                            <img src="<?php echo $row['image_pro']; ?>" alt="user-img" class="img-circle" style="margin-left: 150px; width: 250px;">
                                         </div>
                                         <div class="row" style="margin-left: 100px; margin-top: 30px">
                                             <div class="col-md-12">
