@@ -156,7 +156,7 @@ while ($row = mysqli_fetch_array($query_agent)) {
                 <div class="row">
                     <div class="col-md-12 col-lg-6 col-sm-12">
                         <div class="white-box">
-                            <div style="width:50%;hieght:40%;text-align:center">
+                            <div style="width:50%;text-align:center">
                                 <h2 class="page-header">Agents</h2>
                                 <div>Company </div>
                                 <canvas id="chartjs_pie"></canvas>
