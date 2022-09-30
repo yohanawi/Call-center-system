@@ -43,6 +43,12 @@
                     <li><a href="agent.php">Agent New</a></li>
                 </ul>
             </li>
+            <li> <a href="#" class="waves-effect"><i data-icon="H" class="linea-icon linea-basic fa-fw"></i><span class="hide-menu">Payment<span class="fa arrow"></span></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="customers.php">Customers</a></li>
+                    <li><a href="transactions.php">Transactions</a></li>
+                </ul>
+            </li>
             <li><a href="inbox.php" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Messages</span></a></li>
             <li><a href="subscribers.php" class="waves-effect"><i data-icon="n" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Subscribers</span></a></li>
             <li><a href="functions/logout.php" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>

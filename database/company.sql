@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2022 at 05:02 PM
+-- Generation Time: Sep 30, 2022 at 09:26 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -41,7 +41,30 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `role`, `password`, `date`) VALUES
-(9, 'admin', 'admin@gmail.com', 'admin', '$2y$12$wo5MuxMScRc26QNA09BhOOwYQ79SHdTldiGtK8qWLMwxHK74Oo.36', '2022-09-05 20:30:36');
+(1, 'admin', 'admin@gmail.com', 'admin', '$2y$12$yvFb0.ETvGcO9ktK767oP.obOewOijCVZjE.RWcAxf/I.SnQZhRMa', '2022-09-17 09:48:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agent`
+--
+
+CREATE TABLE `agent` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `company` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `agent`
+--
+
+INSERT INTO `agent` (`id`, `name`, `email`, `company`, `phone`) VALUES
+(3, 'Rashani', 'Rash@gmail.com', 'Dialog', '0771256453'),
+(4, 'nipuni', 'nipuni@gmail.com', 'Hutch', '0781667268'),
+(5, 'yohan', 'yohan@gmail.com', 'Dialog', '0781667268');
 
 -- --------------------------------------------------------
 
@@ -72,6 +95,38 @@ CREATE TABLE `contacts` (
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `names`, `email`, `message`, `date`) VALUES
+(9, 'yohan', 'yohan@gmail.com', 'hello\r\n', '2022-09-08 11:51:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `created_at`) VALUES
+(1, 'user', 'test', 'user@gmail.com', '0000-00-00 00:00:00'),
+(2, 'yohan', 'awishka', 'yohanawishka2000326@gmail.com', '0000-00-00 00:00:00'),
+(3, 'staff', 'test', 'staff@gmail.com', '0000-00-00 00:00:00'),
+(4, 'yohan', 'awishka', 'yohanawishka2000326@gmail.com', '0000-00-00 00:00:00'),
+(5, 'yohan', 'awishka', 'yohanawishka2000326@gmail.com', '2022-09-30 06:31:12');
+
 -- --------------------------------------------------------
 
 --
@@ -92,6 +147,14 @@ CREATE TABLE `leads` (
   `assign` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `leads`
+--
+
+INSERT INTO `leads` (`id`, `fname`, `lname`, `nic`, `phone`, `email`, `birthday`, `address`, `gender`, `image_pro`, `assign`) VALUES
+(1, 'test', 'user', '200008600315', '07712345678', 'user@gmail.com', '2022-09-13', 'colombo', 'male', '', 'active'),
+(9, 'test', 'yohan', '200008600315', '0781667268', 'yohan@gmail.com', '2022-09-20', 'colombo', 'Male', 'WhatsApp Image 2021-11-14 at 19.46.18ghj.png', '');
+
 -- --------------------------------------------------------
 
 --
@@ -109,6 +172,14 @@ CREATE TABLE `phone` (
   `rate` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `phone`
+--
+
+INSERT INTO `phone` (`id`, `number`, `name`, `stime`, `etime`, `comment`, `status`, `rate`, `date`) VALUES
+(23, '0781667268', 'yohan', '22:58:00', '22:59:00', 'good', 'incoming', 4, '2022-09-16 09:58:18'),
+(24, '0781667268', 'yohan', '15:52:00', '15:54:00', 'second test ', 'outgoing', 5, '2022-09-29 15:52:39');
 
 -- --------------------------------------------------------
 
@@ -140,6 +211,13 @@ CREATE TABLE `subscribers` (
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `subscribers`
+--
+
+INSERT INTO `subscribers` (`id`, `email`, `date`) VALUES
+(12, 'yohan@gmail.com', '2022-09-16 16:16:50');
+
 -- --------------------------------------------------------
 
 --
@@ -157,6 +235,40 @@ CREATE TABLE `ticket` (
   `admin_remark` varchar(1000) NOT NULL,
   `admin_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ticket`
+--
+
+INSERT INTO `ticket` (`id`, `subject`, `tasktype`, `priority`, `description`, `status`, `date`, `admin_remark`, `admin_date`) VALUES
+(8, 'test', 'ot1', 'non-urgent', 'testing project \r\n', '', '2022-09-16 10:02:33', '', '2022-09-16 04:32:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL,
+  `customer_id` varchar(255) NOT NULL,
+  `product` varchar(255) NOT NULL,
+  `amount` varchar(255) NOT NULL,
+  `currency` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `customer_id`, `product`, `amount`, `currency`, `status`, `created_at`) VALUES
+(1, 'cus_MWdex0pJqqDgAo', 'Intro To React Course', '5000', 'usd', 'succeeded', '0000-00-00 00:00:00'),
+(2, 'cus_MWdsUZtlQAdfsE', 'Intro To React Course', '5000', 'usd', 'succeeded', '0000-00-00 00:00:00'),
+(3, 'cus_MWeJp556ClxiiD', 'Intro To React Course', '5000', 'usd', 'succeeded', '0000-00-00 00:00:00'),
+(4, 'cus_MWeeFUcnyPOmxz', 'Intro To React Course', '5000', 'usd', 'succeeded', '0000-00-00 00:00:00'),
+(5, 'cus_MWg6qj5CkNcvkl', 'Intro To React Course', '5000', 'usd', 'succeeded', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -192,6 +304,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `agent`
+--
+ALTER TABLE `agent`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
@@ -202,6 +320,12 @@ ALTER TABLE `comments`
 -- Indexes for table `contacts`
 --
 ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -235,6 +359,12 @@ ALTER TABLE `ticket`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -248,7 +378,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `agent`
+--
+ALTER TABLE `agent`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -260,19 +396,25 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `contacts`
 --
 ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `phone`
 --
 ALTER TABLE `phone`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -284,13 +426,19 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `subscribers`
 --
 ALTER TABLE `subscribers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`

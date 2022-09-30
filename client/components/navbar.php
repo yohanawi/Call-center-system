@@ -35,6 +35,7 @@
                     <li><a href="manage-ticket.php">Manage-Ticket </a></li>
                 </ul>
             </li>
+            <li> <a href="payment.php" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="1"></i> <span class="hide-menu"> Payment </a></li>
             <li><a href="functions/logout.php" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
         </ul>
     </div>
