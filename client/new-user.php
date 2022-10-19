@@ -37,9 +37,7 @@ require_once "functions/db.php";
 
 <body>
     <!-- Preloader -->
-    <div class="preloader">
-        <div class="cssload-speeding-wheel"></div>
-    </div>
+    
     <section id="wrapper" class="login-register">
         <div class="register-box">
             <div class="white-box">
