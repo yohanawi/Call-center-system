@@ -368,6 +368,7 @@ while ($row = mysqli_fetch_array($query_agent)) {
     <script src="../plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="../plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
     <script src="../plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+    
     <script type="text/javascript">
         $(document).ready(function() {
             $.toast({
@@ -387,10 +388,9 @@ while ($row = mysqli_fetch_array($query_agent)) {
     <script src="../client/assets/plugins/jquery-ricksaw-chart/js/rickshaw.min.js"></script>
     <script type="text/javascript" src="js/highcharts.js"></script>
     <script type="text/javascript" src="js/exporting.js"></script>
-    <!--Style Switcher -->
-    <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
-</body>
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+
+ </body>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type="text/javascript">
     var ctx = document.getElementById("chartjs_pie").getContext('2d');
@@ -427,5 +427,6 @@ while ($row = mysqli_fetch_array($query_agent)) {
         }
     });
 </script>
-
+ <!--Style Switcher -->
+ <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </html>

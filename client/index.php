@@ -42,7 +42,7 @@ $query_phone = mysqli_query($connection, $sql_phone);
     <!-- Custom CSS -->
     <link href="../admin/css/style.css" rel="stylesheet">
     <!-- color CSS -->
-    <link href="../admin/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link href="css/colors/blue.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -339,6 +339,7 @@ $query_phone = mysqli_query($connection, $sql_phone);
     <script src="../plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
     <script src="../plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js"></script>
     <script src="../plugins/bower_components/toast-master/js/jquery.toast.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $.toast({
@@ -355,5 +356,6 @@ $query_phone = mysqli_query($connection, $sql_phone);
     <!--Style Switcher -->
     <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
-
+ <!--Style Switcher -->
+ <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </html>

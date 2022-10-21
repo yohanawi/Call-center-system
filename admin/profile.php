@@ -45,9 +45,7 @@ $email = $_SESSION['email'];
 
 <body>
     <!-- Preloader -->
-    <div class="preloader">
-        <div class="cssload-speeding-wheel"></div>
-    </div>
+    
     <div id="wrapper">
         <!--header-->
         <?php include './components/header.php'; ?>

@@ -15,7 +15,7 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li><a href="profile.php"><i class="ti-user"></i> Profile</a></li>
-                    <li><a href="settings.php"><i class="ti-settings"></i> Account Setting</a></li>
+                 
                     <li><a href="functions/logout.php"><i class="fa fa-power-off"></i> Logout</a></li>
                 </ul>
             </li>
