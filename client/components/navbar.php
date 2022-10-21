@@ -20,11 +20,11 @@
                 </ul>
             </li>
             <li class="nav-small-cap m-t-10">--- Main Menu</li>
-            <li> <a href="index.php" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu"> Dashboard </a></li>
+            <li> <a href="index.php" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="Z"></i> <span class="hide-menu"> Dashboard </a></li>
             <li> <a href="#" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="p"></i> <span class="hide-menu"> Leads <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="leads.php">Create Leads</a></li>
-                    <li><a href="manage-leads.php">Manage Leads</a></li>
+                    <li><a href="manage-leads.php">Leads</a></li>
                 </ul>
             </li>
             <li class="nav-small-cap">--- Other</li>
@@ -32,10 +32,10 @@
             <li> <a href="#" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="."></i> <span class="hide-menu"> Tickets <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="ticket.php">Create-Ticket</a></li>
-                    <li><a href="manage-ticket.php">Manage-Ticket </a></li>
+                    <li><a href="manage-ticket.php">Ticket </a></li>
                 </ul>
             </li>
-            <li> <a href="payment.php" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="1"></i> <span class="hide-menu"> Payment </a></li>
+            <li> <a href="payment.php" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="q"></i> <span class="hide-menu"> Payment </a></li>
             <li><a href="functions/logout.php" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log out</span></a></li>
         </ul>
     </div>

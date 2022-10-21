@@ -3,7 +3,7 @@
 		<h3>Address</h3>
 		<ul>
 			<li><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Woodvale Grove, Westlands - Nairobi, Kenya</li>
-			<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@Companyonline.net">info@example.com</a></li>
+			<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:info@Companyonline.net">callcenter@gmail.com</a></li>
 			<!-- <li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> +(254) 754 235 535</li> -->
 		</ul>
 	</div>
@@ -11,10 +11,10 @@
 		<h3>Get In Touch</h3>
 		<p>Follow us, Tweet us, Tag us, Pin us.</p>
 		<ul class="social-icons">
-			<li><a href="#" class="icon icon-border facebook"></a></li>
-			<li><a href="#" class="icon icon-border twitter"></a></li>
-			<li><a href="#" class="icon icon-border instagram"></a></li>
-			<li><a href="#" class="icon icon-border pinterest"></a></li>
+			<li><a href="https://www.facebook.com/" class="icon icon-border facebook"></a></li>
+			<li><a href="https://twitter.com/" class="icon icon-border twitter"></a></li>
+			<li><a href="https://www.instagram.com" class="icon icon-border instagram"></a></li>
+			<li><a href="https://www.pinterest.com/" class="icon icon-border pinterest"></a></li>
 		</ul>
 	</div>
 	<div class="col-md-4 footer-left-w3-agileits">

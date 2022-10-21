@@ -80,9 +80,9 @@ $query_phone = mysqli_query($connection, $sql_phone);
                     <div class="col-md-12 col-lg-12 col-sm-12">
                         <div class="white-box">
                             <div class="row row-in">
-                                <div class="col-lg-3 col-sm-6 row-in-br">
+                                <div class="col-lg-4 col-sm-6 row-in-br">
                                     <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="U" class="linea-icon linea-basic"></i>
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="n" class="linea-icon linea-basic"></i>
                                             <h5 class="text-muted vb">Profile</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
@@ -97,9 +97,9 @@ $query_phone = mysqli_query($connection, $sql_phone);
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-6 row-in-br">
+                                <div class="col-lg-4 col-sm-6 row-in-br">
                                     <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="U" class="linea-icon linea-basic"></i>
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="." class="linea-icon linea-basic"></i>
                                             <h5 class="text-muted vb">Tickets</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">
@@ -114,9 +114,9 @@ $query_phone = mysqli_query($connection, $sql_phone);
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3 col-sm-6 row-in-br">
+                                <div class="col-lg-4 col-sm-6 row-in-br">
                                     <div class="col-in row">
-                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="U" class="linea-icon linea-basic"></i>
+                                        <div class="col-md-6 col-sm-6 col-xs-6"> <i data-icon="V" class="linea-icon linea-basic"></i>
                                             <h5 class="text-muted vb">Phone log</h5>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-6">

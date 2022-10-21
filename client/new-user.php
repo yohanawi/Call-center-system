@@ -44,35 +44,47 @@ require_once "functions/db.php";
                 <form class="form-horizontal form-material" action="functions/new_user.php" method="post">
                     <a href="../index.php" class="waves-effect active"><i class="fa fa-arrow-circle-o-left" data-icon="v"></i> <span>Back to Home</span></a>
                     <h2 class="box-title m-b-20">Sign UP</h2>
+                    <div class="row">
                     <div class="form-group ">
                         <div class="col-xs-12">
+                            <label>First Name <span style="color: red;">*</span></label>
                             <input class="form-control" type="text" name="fname" required="" placeholder="First name">
                         </div>
                     </div>
+                    <div class="col-md-2"></div>
                     <div class="form-group ">
                         <div class="col-xs-12">
+                        <label>Last Name <span style="color: red;">*</span></label>
                             <input class="form-control" type="text" name="lname" required="" placeholder="Last name">
                         </div>
                     </div>
+                    </div>
                     <div class="form-group ">
                         <div class="col-xs-12">
-                            <input class="form-control" type="number" name="phone" required="" placeholder="Phone">
+                        <label>Phone <span style="color: red;">*</span></label>
+                            <input class="form-control" type="text" name="phone" maxlength="10" required="" placeholder="Phone" >
                         </div>
                     </div>
                     <div class="form-group ">
                         <div class="col-xs-12">
+                        <label>Email <span style="color: red;">*</span></label>
                             <input class="form-control" type="email" name="email" required="" placeholder="Email">
                         </div>
                     </div>
+                    <div class="row">
                     <div class="form-group">
-                        <div class="col-xs-12">
+                        <div class="col-xs-6">
+                        <label>Password <span style="color: red;">*</span></label>
                             <input class="form-control" type="password" name="password" required="" placeholder="Password">
                         </div>
                     </div>
+                    <div class="col-md-2"></div>
                     <div class="form-group">
-                        <div class="col-xs-12">
+                        <div class="col-xs-6">
+                        <label>Confirm Password <span style="color: red;">*</span></label>
                             <input class="form-control" type="password" name="Cpassword" required="" placeholder="Confirm Password">
                         </div>
+                    </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
