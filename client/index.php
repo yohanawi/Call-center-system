@@ -28,6 +28,7 @@ $query_phone = mysqli_query($connection, $sql_phone);
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../images/telephone-call.png">
     <title>Call-center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" />
     <!-- Bootstrap Core CSS -->
     <link href="../admin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
@@ -39,6 +40,7 @@ $query_phone = mysqli_query($connection, $sql_phone);
     <link href="../plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
     <!-- animation CSS -->
     <link href="../admin/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="../client/css/css.css">
     <!-- Custom CSS -->
     <link href="../admin/css/style.css" rel="stylesheet">
     <!-- color CSS -->
@@ -58,6 +60,7 @@ $query_phone = mysqli_query($connection, $sql_phone);
     <div class="preloader">
         <div class="cssload-speeding-wheel"></div>
     </div>
+
     <div id="wrapper">
         <!--header-->
         <?php include './components/header.php'; ?>
@@ -225,7 +228,7 @@ $query_phone = mysqli_query($connection, $sql_phone);
                     </div>
                 </div>
                 <div class="row">
-                <div class="col-md-12 col-lg-6 col-sm-12">
+                    <div class="col-md-12 col-lg-6 col-sm-12">
                         <div class="white-box">
                             <div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
                             <?php
@@ -302,9 +305,9 @@ $query_phone = mysqli_query($connection, $sql_phone);
                 </div>
                 <!-- /.row -->
                 <div class="row">
-                    
+
                 </div>
-                
+
                 <!-- .right-sidebar -->
                 <?php include './components/sidebar.php'; ?>
             </div>
@@ -312,6 +315,16 @@ $query_phone = mysqli_query($connection, $sql_phone);
             <?php include './components/footer.php'; ?>
         </div>
         <!-- /#page-wrapper -->
+        <!--floating button-->
+    <div class="fabs" onclick="toggleBtn()">
+        <div class="action">
+            <i class="fas fa-plus" id="add"></i>
+            <i class="fas fa-times" id="remove" style="display: none"></i>
+        </div>
+        <div class="btns">
+            <a href="../client/functions/whatsapp.php" class="btnw" style="background: #25D366"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
@@ -353,9 +366,36 @@ $query_phone = mysqli_query($connection, $sql_phone);
             })
         });
     </script>
+    <script>
+        function toggleBtn() {
+            const Btns = document.querySelector(".btns");
+            const add = document.getElementById("add");
+            const remove = document.getElementById("remove");
+            const btn = document.querySelector(".btns").querySelectorAll("a");
+            Btns.classList.toggle("open");
+            if (Btns.classList.contains("open")) {
+                remove.style.display = "block";
+                add.style.display = "none";
+                btn.forEach((e, i) => {
+                    setTimeout(() => {
+                        bottom = 40 * i;
+                        e.style.bottom = bottom + "px";
+                        console.log(e);
+                    }, 100 * i);
+                });
+            } else {
+                add.style.display = "block";
+                remove.style.display = "none";
+                btn.forEach((e, i) => {
+                    e.style.bottom = "0px";
+                });
+            }
+        }
+    </script>
     <!--Style Switcher -->
     <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
 </body>
- <!--Style Switcher -->
- <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+<!--Style Switcher -->
+<script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+
 </html>
